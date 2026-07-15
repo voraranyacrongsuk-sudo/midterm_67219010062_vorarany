@@ -3,29 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>หน้าเว็บของฉัน</title>
+    <title>Portfolio ของ วรรัญญา</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f8ff; /* สีฟ้าอ่อน */
-            color: #333;
+            background-color: #001f4d; /* เปลี่ยนเป็นสีน้ำเงินเข้มตามชอบ */
+            color: #fff; /* เปลี่ยนข้อความหลักเป็นสีขาวเพื่อให้เด่นบนพื้นหลังน้ำเงิน */
             margin: 0;
             padding: 20px;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
         h1, h2 {
-            color: #004080; /* สีน้ำเงินเข้ม */
+            color: #3399ff; /* สีฟ้าสว่าง */
             text-align: center;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            position: relative; /* สำหรับรูปดาว */
+            background-color: rgba(255, 255, 255, 0.1); /* พื้นหลังโปร่งแสงสไตล์กระจก */
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 1; /* ให้อยู่เหนือดาวพื้นหลัง */
         }
 
         .profile-pic {
@@ -35,16 +41,39 @@
             height: 200px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid #004080;
+            border: 5px solid #3399ff;
         }
 
-        /* กล่องใส่เครื่องเล่นเพลง */
-        .music-player {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 10px;
-            background-color: #e6f2ff;
-            border-radius: 8px;
+        /* ส่วนกล่องเพลง */
+        .music-section {
+            background-color: rgba(230, 242, 255, 0.15);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #3399ff;
+        }
+        .music-title {
+            font-weight: bold;
+            color: #3399ff;
+            margin-top: 0;
+        }
+        .music-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .music-list li {
+            margin-bottom: 10px;
+        }
+        .music-link {
+            color: #ffd700; /* สีทอง */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        .music-link:hover {
+            color: #fff;
+            text-decoration: underline;
         }
 
         .anime-ranking {
@@ -56,13 +85,22 @@
             align-items: center;
             margin-bottom: 20px;
             padding: 15px;
-            background-color: #e6f2ff; /* สีฟ้าอ่อนกว่า */
+            background-color: rgba(230, 242, 255, 0.1); /* โปร่งแสงเข้ากับธีมน้ำเงิน */
             border-radius: 8px;
-            transition: transform 0.2s ease-in-out; /* ลูกเล่นตอนเอาเมาส์วาง */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.2s ease-in-out, background-color 0.2s; 
         }
 
         .anime-item:hover {
             transform: scale(1.03);
+            background-color: rgba(230, 242, 255, 0.2);
+        }
+
+        /* ปรับรูปให้กดลิงก์ได้ */
+        .anime-img-link {
+            display: block;
+            margin-right: 20px;
+            cursor: pointer;
         }
 
         .anime-item img {
@@ -70,7 +108,12 @@
             height: 100px;
             object-fit: cover;
             border-radius: 5px;
-            margin-right: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: opacity 0.2s;
+        }
+
+        .anime-item img:hover {
+            opacity: 0.8; /* ให้รู้ว่ากดได้ */
         }
 
         .anime-details {
@@ -80,62 +123,76 @@
         .anime-title {
             font-weight: bold;
             font-size: 1.2em;
-            color: #004080;
+            color: #3399ff;
+            margin: 0 0 5px 0;
         }
 
         .anime-rank {
             font-size: 1.1em;
-            color: #ff8c00; /* สีส้ม */
+            color: #ffaa66; /* สีส้มสว่าง */
+            margin: 0 0 5px 0;
         }
 
         .anime-score {
             font-size: 1.1em;
-            color: #4caf50; /* สีเขียว */
+            color: #66ff66; /* สีเขียวสว่าง */
+            margin: 0;
         }
 
-        /* รูปดาวลอย */
+        /* ระบบดาวเยอะๆ ลอยสุ่มพื้นหลัง */
         .star {
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #ffd700; /* สีทอง */
+            background-color: #ffd700;
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-            opacity: 0.7;
-            animation: float 5s infinite ease-in-out;
+            opacity: 0.6;
+            animation: float 6s infinite ease-in-out;
+            z-index: 0;
         }
 
         @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
+            50% { transform: translateY(-30px) scale(1.2); opacity: 0.8; }
         }
     </style>
 </head>
 <body>
+
+    <div class="star" style="top: 5%; left: 10%; width: 25px; height: 25px; animation-delay: 0s;"></div>
+    <div class="star" style="top: 15%; right: 15%; width: 15px; height: 15px; animation-delay: 1s;"></div>
+    <div class="star" style="top: 40%; left: 5%; width: 20px; height: 20px; animation-delay: 2s;"></div>
+    <div class="star" style="top: 60%; right: 8%; width: 25px; height: 25px; animation-delay: 1.5s;"></div>
+    <div class="star" style="top: 85%; left: 12%; width: 18px; height: 18px; animation-delay: 3s;"></div>
+    <div class="star" style="top: 75%; right: 25%; width: 22px; height: 22px; animation-delay: 0.5s;"></div>
+    <div class="star" style="top: 25%; left: 25%; width: 15px; height: 15px; animation-delay: 2.5s;"></div>
+
     <div class="container">
-        <div class="star" style="top: 50px; left: 100px;"></div>
-        <div class="star" style="top: 150px; right: 80px; animation-delay: 1s;"></div>
-        <div class="star" style="bottom: 100px; left: 150px; animation-delay: 2s;"></div>
+        <h1>Welcome! วรรัญญา ครองสุข (จีน)</h1>
+        
+        <img src="https://github.com/user-attachments/assets/b5e29d13-63d6-4766-a511-e2b4816bde35" alt="รูปโปรไฟล์" class="profile-pic">
+        
+        <div style="text-align: center; line-height: 1.6; margin-bottom: 20px;">
+            <p style="font-size: 1.2em; font-weight: bold; color: #3399ff;">ยินดีต้อนรับสู่ Portfolio ของฉัน ✨</p>
+            <p>ตอนนี้ที่นี่อาจจะยังไม่มีผลงานมากนัก แต่ทุกอย่างเริ่มต้นจากศูนย์เสมอ ฉันกำลังเรียนรู้ พัฒนาทักษะ และจะค่อย ๆ เพิ่มผลงานเข้ามาเรื่อย ๆ</p>
+            <p>ขอบคุณที่เข้ามาเยี่ยมชม และหวังว่าจะได้แบ่งปันผลงานใหม่ ๆ กับทุกคนในอนาคต 💙</p>
+        </div>
 
-        <h1>แนะนำตัวเอง</h1>
-        <img src="https://github.com/user-attachments/assets/b5e29d13-63d6-4766-a511-e2b4816bde35" alt="บากิ" class="profile-pic">
-        <p style="text-align: center;">สวัสดีครับ ยินดีต้อนรับสู่หน้าเว็บของผม!</p>
-
-        <div class="music-player">
-            <p style="margin: 0 0 5px 0; font-weight: bold; color: #004080;">เพลงโปรดของฉัน 🎵</p>
-            <audio controls src="ใส่ลิงก์เพลงตรงนี้.mp3">
-                เบราว์เซอร์ของคุณไม่รองรับเครื่องเล่นเพลงนี้
-            </audio>
+        <div class="music-section">
+            <p class="music-title">เพลงโปรดที่อยากให้ลองฟัง 🎵</p>
+            <ul class="music-list">
+                <li>1. <a class="music-link" href="https://youtu.be/Lrr6_oDFhpI?si=7bJrmXSEj9DBkGkB" target="_blank">คลิกที่นี่เพื่อฟังเพลงที่ 1 (YouTube)</a></li>
+                <li>2. <a class="music-link" href="https://youtu.be/bIiIrXM7BUA?si=P_FU6c4YTeraZZ3k" target="_blank">คลิกที่นี่เพื่อฟังเพลงที่ 2 (YouTube)</a></li>
+                <li>3. <a class="music-link" href="https://youtu.be/HJstyRBLqBQ?si=QMPEi16UXBvjr68a" target="_blank">คลิกที่นี่เพื่อฟังเพลงที่ 3 (YouTube)</a></li>
+            </ul>
         </div>
 
         <div class="anime-ranking">
             <h2>อันดับอนิเมะยอดนิยมของฉัน</h2>
+            <p style="text-align: center; font-size: 0.9em; color: #aaa;">*(คลิกที่รูปภาพเพื่อดูรูปขนาดเต็มได้เลย)*</p>
 
             <div class="anime-item">
-                <img src="https://github.com/user-attachments/assets/873f0b40-7cb7-48eb-8b48-a22a9a66623e" alt="บากิ">
+                <a class="anime-img-link" href="https://github.com/user-attachments/assets/873f0b40-7cb7-48eb-8b48-a22a9a66623e" target="_blank" title="คลิกเพื่อดูรูปใหญ่">
+                    <img src="https://github.com/user-attachments/assets/873f0b40-7cb7-48eb-8b48-a22a9a66623e" alt="บากิ">
+                </a>
                 <div class="anime-details">
                     <p class="anime-title">บากิ</p>
                     <p class="anime-rank">อันดับ 1</p>
@@ -144,7 +201,9 @@
             </div>
 
             <div class="anime-item">
-                 <img src="https://github.com/user-attachments/assets/8895ed8d-9c7e-4d1c-a32f-2d40cbef8c0a" alt="บีสตาร์">
+                <a class="anime-img-link" href="https://github.com/user-attachments/assets/8895ed8d-9c7e-4d1c-a32f-2d40cbef8c0a" target="_blank" title="คลิกเพื่อดูรูปใหญ่">
+                    <img src="https://github.com/user-attachments/assets/8895ed8d-9c7e-4d1c-a32f-2d40cbef8c0a" alt="บีสตาร์">
+                </a>
                 <div class="anime-details">
                     <p class="anime-title">บีสตาร์</p>
                     <p class="anime-rank">อันดับ 2</p>
@@ -153,7 +212,9 @@
             </div>
 
             <div class="anime-item">
-                <img src="https://github.com/user-attachments/assets/4989d0bc-8885-4a23-bfd7-fd128c397705" alt="jojo">
+                <a class="anime-img-link" href="https://github.com/user-attachments/assets/4989d0bc-8885-4a23-bfd7-fd128c397705" target="_blank" title="คลิกเพื่อดูรูปใหญ่">
+                    <img src="https://github.com/user-attachments/assets/4989d0bc-8885-4a23-bfd7-fd128c397705" alt="jojo">
+                </a>
                 <div class="anime-details">
                     <p class="anime-title">JoJo's Bizarre Adventure</p>
                     <p class="anime-rank">อันดับ 3</p>
@@ -162,7 +223,9 @@
             </div>
 
             <div class="anime-item">
-                <img src="https://github.com/user-attachments/assets/4a4cc54b-c860-441e-b14a-ae588966b4bc" alt="วันพีช">
+                <a class="anime-img-link" href="https://github.com/user-attachments/assets/4a4cc54b-c860-441e-b14a-ae588966b4bc" target="_blank" title="คลิกเพื่อดูรูปใหญ่">
+                    <img src="https://github.com/user-attachments/assets/4a4cc54b-c860-441e-b14a-ae588966b4bc" alt="วันพีช">
+                </a>
                 <div class="anime-details">
                     <p class="anime-title">วันพีช</p>
                     <p class="anime-rank">อันดับ 4</p>
