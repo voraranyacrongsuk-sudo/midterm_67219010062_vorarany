@@ -31,50 +31,163 @@
         h1{
             font-size:48px;
             margin-bottom:10px;
-            color:#7dd3fc;
+            color:#7dd3fc;<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าเว็บของฉัน</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* สีฟ้าอ่อน */
+            color: #333;
+            margin: 0;
+            padding: 20px;
         }
 
-        h2{
-            font-size:30px;
-            margin-bottom:25px;
-            color:#ffffff;
+        h1, h2 {
+            color: #004080; /* สีน้ำเงินเข้ม */
+            text-align: center;
         }
 
-        p{
-            font-size:18px;
-            line-height:1.8;
-            color:#e2e8f0;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative; /* สำหรับรูปดาว */
         }
 
-        .heart{
-            color:#60a5fa;
-            font-size:22px;
+        .profile-pic {
+            display: block;
+            margin: 0 auto 20px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #004080;
+        }
+
+        .anime-ranking {
+            margin-top: 30px;
+        }
+
+        .anime-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #e6f2ff; /* สีฟ้าอ่อนกว่า */
+            border-radius: 8px;
+            transition: transform 0.2s ease-in-out; /* ลูกเล่นตอนเอาเมาส์วาง */
+        }
+
+        .anime-item:hover {
+            transform: scale(1.03);
+        }
+
+        .anime-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+
+        .anime-details {
+            flex: 1;
+        }
+
+        .anime-title {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #004080;
+        }
+
+        .anime-rank {
+            font-size: 1.1em;
+            color: #ff8c00; /* สีส้ม */
+        }
+
+        .anime-score {
+            font-size: 1.1em;
+            color: #4caf50; /* สีเขียว */
+        }
+
+        /* รูปดาวลอย */
+        .star {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ffd700; /* สีทอง */
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            opacity: 0.7;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
         }
     </style>
 </head>
-
 <body>
+    <div class="container">
+        <!-- รูปดาวลอย (ปรับตำแหน่งตามต้องการ) -->
+        <div class="star" style="top: 50px; left: 100px;"></div>
+        <div class="star" style="top: 150px; right: 80px; animation-delay: 1s;"></div>
+        <div class="star" style="bottom: 100px; left: 150px; animation-delay: 2s;"></div>
 
-<div class="container">
-    <h1>Welcome!</h1>
+        <h1>แนะนำตัวเอง</h1>
+        <img class="profile-pic" src="https://github.com/user-attachments/assets/4a4cc54b-c860-441e-b14a-ae588966b4bc" alt="รูปวาดแนะนำตัวเอง">
+        <p>สวัสดีครับ ยินดีต้อนรับสู่หน้าเว็บของผม!</p>
 
-    <h2>วรรัญญา ครองสุข (จีน)</h2>
+        <div class="anime-ranking">
+            <h2>อันดับอนิเมะยอดนิยมของฉัน</h2>
 
-    <p>
-        ยินดีต้อนรับสู่ Portfolio ของฉัน ✨
-    </p>
+            <div class="anime-item">
+                <img src="https://github.com/user-attachments/assets/b5e29d13-63d6-4766-a511-e2b4816bde35" alt="บากิ">
+                <div class="anime-details">
+                    <p class="anime-title">บากิ</p>
+                    <p class="anime-rank">อันดับ 1</p>
+                    <p class="anime-score">คะแนน: 10/10</p>
+                </div>
+            </div>
 
-    <p>
-        ตอนนี้ที่นี่อาจจะยังไม่มีผลงานมากนัก แต่ทุกอย่างเริ่มต้นจากศูนย์เสมอ
-        ฉันกำลังเรียนรู้ พัฒนาทักษะ และจะค่อย ๆ เพิ่มผลงานเข้ามาเรื่อย ๆ
-    </p>
+            <div class="anime-item">
+                <img src="https://github.com/user-attachments/assets/873f0b40-7cb7-48eb-8b48-a22a9a66623e" alt="บีสตาร์">
+                <div class="anime-details">
+                    <p class="anime-title">บีสตาร์</p>
+                    <p class="anime-rank">อันดับ 2</p>
+                    <p class="anime-score">คะแนน: 6/10</p>
+                </div>
+            </div>
 
-    <p>
-        ขอบคุณที่เข้ามาเยี่ยมชม และหวังว่าจะได้แบ่งปันผลงานใหม่ ๆ
-        กับทุกคนในอนาคต
-        <span class="heart">💙</span>
-    </p>
-</div>
+            <div class="anime-item">
+                <img src="https://github.com/user-attachments/assets/8895ed8d-9c7e-4d1c-a32f-2d40cbef8c0a" alt="JoJo's Bizarre Adventure">
+                <div class="anime-details">
+                    <p class="anime-title">JoJo's Bizarre Adventure</p>
+                    <p class="anime-rank">อันดับ 3</p>
+                    <p class="anime-score">คะแนน: 8/10</p>
+                </div>
+            </div>
 
+            <div class="anime-item">
+                <img src="https://github.com/user-attachments/assets/4989d0bc-8885-4a23-bfd7-fd128c397705" alt="วันพีช">
+                <div class="anime-details">
+                    <p class="anime-title">วันพีช</p>
+                    <p class="anime-rank">อันดับ 4</p>
+                    <p class="anime-score">คะแนน: 7/10</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
