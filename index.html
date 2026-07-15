@@ -28,19 +28,23 @@
             position: relative; /* สำหรับรูปดาว */
         }
 
-        /* ปรับสไตล์รูปแนะนำตัวเอง */
-        .profile-section {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
         .profile-pic {
             display: block;
             margin: 0 auto 20px;
-            max-width: 100%; /* ให้รูปขยายตามพื้นที่แต่ไม่เกินขนาดจริง */
-            height: auto;
-            border-radius: 10px; /* ขอบมนเล็กน้อย */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #004080;
+        }
+
+        /* กล่องใส่เครื่องเล่นเพลง */
+        .music-player {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #e6f2ff;
+            border-radius: 8px;
         }
 
         .anime-ranking {
@@ -54,16 +58,15 @@
             padding: 15px;
             background-color: #e6f2ff; /* สีฟ้าอ่อนกว่า */
             border-radius: 8px;
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* เพิ่มลูกเล่นเงา */
+            transition: transform 0.2s ease-in-out; /* ลูกเล่นตอนเอาเมาส์วาง */
         }
 
         .anime-item:hover {
             transform: scale(1.03);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
         .anime-item img {
-            width: 100px; /* กำหนดขนาดรูปอนิเมะในลิสต์ */
+            width: 100px;
             height: 100px;
             object-fit: cover;
             border-radius: 5px;
@@ -78,19 +81,16 @@
             font-weight: bold;
             font-size: 1.2em;
             color: #004080;
-            margin: 0 0 5px 0;
         }
 
         .anime-rank {
             font-size: 1.1em;
             color: #ff8c00; /* สีส้ม */
-            margin: 0 0 5px 0;
         }
 
         .anime-score {
             font-size: 1.1em;
             color: #4caf50; /* สีเขียว */
-            margin: 0;
         }
 
         /* รูปดาวลอย */
@@ -106,50 +106,54 @@
 
         @keyframes float {
             0%, 100% {
-                transform: translateY(0) rotate(0deg);
+                transform: translateY(0);
             }
             50% {
-                transform: translateY(-20px) rotate(20deg);
+                transform: translateY(-20px);
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="star" style="top: 50px; left: 10px;"></div>
-        <div class="star" style="top: 150px; right: 20px; animation-delay: 1s;"></div>
-        <div class="star" style="bottom: 100px; left: 30px; animation-delay: 2s;"></div>
-        <div class="star" style="top: 300px; left: 50%; animation-delay: 1.5s;"></div>
+        <div class="star" style="top: 50px; left: 100px;"></div>
+        <div class="star" style="top: 150px; right: 80px; animation-delay: 1s;"></div>
+        <div class="star" style="bottom: 100px; left: 150px; animation-delay: 2s;"></div>
 
-        <div class="profile-section">
-            <h1>แนะนำตัวเอง</h1>
-            <img src="https://github.com/user-attachments/assets/4a4cc54b-c860-441e-b14a-ae588966b4bc" alt="รูปวาดแนะนำตัวเอง" class="profile-pic">
-            <p>สวัสดีครับ ยินดีต้อนรับสู่หน้าเว็บแนะนำตัวเองและอนิเมะที่ผมชื่นชอบ!</p>
+        <h1>แนะนำตัวเอง</h1>
+        <img src="https://github.com/user-attachments/assets/b5e29d13-63d6-4766-a511-e2b4816bde35" alt="บากิ" class="profile-pic">
+        <p style="text-align: center;">สวัสดีครับ ยินดีต้อนรับสู่หน้าเว็บของผม!</p>
+
+        <div class="music-player">
+            <p style="margin: 0 0 5px 0; font-weight: bold; color: #004080;">เพลงโปรดของฉัน 🎵</p>
+            <audio controls src="ใส่ลิงก์เพลงตรงนี้.mp3">
+                เบราว์เซอร์ของคุณไม่รองรับเครื่องเล่นเพลงนี้
+            </audio>
         </div>
 
         <div class="anime-ranking">
             <h2>อันดับอนิเมะยอดนิยมของฉัน</h2>
 
             <div class="anime-item">
-                <img src="https://github.com/user-attachments/assets/b5e29d13-63d6-4766-a511-e2b4816bde35" alt="บากิ">
+                <img src="https://github.com/user-attachments/assets/873f0b40-7cb7-48eb-8b48-a22a9a66623e" alt="บากิ">
                 <div class="anime-details">
-                    <p class="anime-title">บากิ (Baki)</p>
+                    <p class="anime-title">บากิ</p>
                     <p class="anime-rank">อันดับ 1</p>
                     <p class="anime-score">คะแนน: 10/10</p>
                 </div>
             </div>
 
             <div class="anime-item">
-                <img src="https://github.com/user-attachments/assets/873f0b40-7cb7-48eb-8b48-a22a9a66623e" alt="บีสตาร์">
+                 <img src="https://github.com/user-attachments/assets/8895ed8d-9c7e-4d1c-a32f-2d40cbef8c0a" alt="บีสตาร์">
                 <div class="anime-details">
-                    <p class="anime-title">บีสตาร์ (Beastars)</p>
+                    <p class="anime-title">บีสตาร์</p>
                     <p class="anime-rank">อันดับ 2</p>
                     <p class="anime-score">คะแนน: 6/10</p>
                 </div>
             </div>
 
             <div class="anime-item">
-                <img src="https://github.com/user-attachments/assets/8895ed8d-9c7e-4d1c-a32f-2d40cbef8c0a" alt="JoJo's Bizarre Adventure">
+                <img src="https://github.com/user-attachments/assets/4989d0bc-8885-4a23-bfd7-fd128c397705" alt="jojo">
                 <div class="anime-details">
                     <p class="anime-title">JoJo's Bizarre Adventure</p>
                     <p class="anime-rank">อันดับ 3</p>
@@ -158,9 +162,9 @@
             </div>
 
             <div class="anime-item">
-                <img src="https://github.com/user-attachments/assets/4989d0bc-8885-4a23-bfd7-fd128c397705" alt="วันพีช">
+                <img src="https://github.com/user-attachments/assets/4a4cc54b-c860-441e-b14a-ae588966b4bc" alt="วันพีช">
                 <div class="anime-details">
-                    <p class="anime-title">วันพีช (One Piece)</p>
+                    <p class="anime-title">วันพีช</p>
                     <p class="anime-rank">อันดับ 4</p>
                     <p class="anime-score">คะแนน: 7/10</p>
                 </div>
